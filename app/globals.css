@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .bg-hero {
+    background: url(../public/images/landing-bg.jpg) center no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .nav-img {
+    background-image: url(../public/images/nav-img.png);
+  }
+}
