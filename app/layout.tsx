@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Navbar";
 
 const vazir = Vazirmatn({
   subsets: ["arabic"],
@@ -19,8 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl">
-      <body className={vazir.className}>
-        <main className="p-2">{children}</main>
+      <body className={`${vazir.className} bg-hero`}>
+        <Navbar />
+        <main className="">{children}</main>
       </body>
     </html>
   );
