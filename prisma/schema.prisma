@@ -28,5 +28,5 @@ model Coin {
   highest    String
   time       String
   status     Status
-  updateTime DateTime @default(now())
+  updateTime DateTime @updatedAt
 }
