@@ -43,3 +43,15 @@ model Crypto {
   status      Status
   updateTime  DateTime @updatedAt
 }
+
+model Currency {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      String
+  change     String
+  lowest     String
+  highest    String
+  time       String
+  status     Status
+  updateTime DateTime @updatedAt
+}
