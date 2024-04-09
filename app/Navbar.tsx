@@ -7,7 +7,7 @@ import { FaCoins } from "react-icons/fa";
 const Navbar = () => {
   const navItems: { label: string; href: string }[] = [
     { label: "قیمت سکه", href: "/coins" },
-    { label: "قیمت ارز", href: "/" },
+    { label: "قیمت ارز", href: "/currency" },
     { label: "قیمت ارز دیجیتال", href: "/crypto" },
   ];
 
