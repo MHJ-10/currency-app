@@ -1,7 +1,7 @@
 import prisma from "@/prisma/client";
-import { NextRequest, NextResponse } from "next/server";
-import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
+import { NextRequest, NextResponse } from "next/server";
+import axios from "axios";
 
 export async function PATCH(
   req: NextRequest,
@@ -14,11 +14,11 @@ export async function PATCH(
   if (!coin)
     return NextResponse.json({ message: "Bad Request" }, { status: 400 });
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto("https://www.tgju.org/", { waitUntil: "networkidle2" });
+  const endpoint = "https://www.tgju.org/";
+  const page = await axios.get(endpoint);
 
-  const html = await page.content();
+  const html = await page.data;
+
   const $ = cheerio.load(html);
 
   const selectedCoin = $(
@@ -47,8 +47,6 @@ export async function PATCH(
       status: "fixed",
     },
   });
-
-  await browser.close();
 
   return NextResponse.json({ updatedData }, { status: 201 });
 }
