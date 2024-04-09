@@ -8,7 +8,7 @@ const Navbar = () => {
   const navItems: { label: string; href: string }[] = [
     { label: "قیمت سکه", href: "/coins" },
     { label: "قیمت ارز", href: "/" },
-    { label: "قیمت ارز دیجیتال", href: "/" },
+    { label: "قیمت ارز دیجیتال", href: "/crypto" },
   ];
 
   const pathName = usePathname();
