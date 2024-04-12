@@ -1,6 +1,17 @@
+import { Status } from "@prisma/client";
 import * as cheerio from "cheerio";
 import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
+
+interface Coin {
+  name: string;
+  price: string;
+  change: string;
+  status: Status;
+  lowest: string;
+  highest: string;
+  time: string;
+}
 
 export async function GET() {
   const browser = await puppeteer.launch();
@@ -10,18 +21,30 @@ export async function GET() {
   const html = await page.content();
   const $ = cheerio.load(html);
 
-  const selectedCoin = $($("#coin-table > tbody > tr").get(2)).find("td");
+  const coins: Coin[] = [];
 
-  const data = {
-    price: $(selectedCoin[0]).text().trim(),
-    change: $(selectedCoin[1]).text().trim(),
-    status: $(selectedCoin[1]).attr("class"),
-    lowest: $(selectedCoin[2]).text().trim(),
-    highest: $(selectedCoin[3]).text().trim(),
-    time: $(selectedCoin[4]).text().trim(),
-  };
+  for (let i = 0; i < 5; i++) {
+    const selectedCoin = $($("#coin-table > tbody > tr").get(i)).find("td");
+
+    const coinName = $($("#coin-table > tbody > tr").get(i)).find("th");
+
+    const data: Coin = {
+      name: coinName.text().trim(),
+      price: $(selectedCoin[0]).text().trim(),
+      change: $(selectedCoin[1]).text().trim(),
+      status: $(selectedCoin[1]).attr("class") as Status,
+      lowest: $(selectedCoin[2]).text().trim(),
+      highest: $(selectedCoin[3]).text().trim(),
+      time: $(selectedCoin[4]).text().trim(),
+    };
+
+    coins.push(data);
+  }
 
   await browser.close();
 
-  return NextResponse.json({ data });
+  return NextResponse.json(
+    { data: coins, length: coins.length },
+    { status: 200 },
+  );
 }
