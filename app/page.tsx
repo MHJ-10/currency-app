@@ -1,11 +1,10 @@
-import heroBg from "@/public/images/landing-img.png";
 import coinLogo from "@/public/images/bitcoin-logo.png";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="text-white">
-      <div className="flex flex-col items-center justify-center gap-3 py-5 md:flex-row md:justify-around">
+    <div className="relative -mt-20 h-screen text-white">
+      <div className="flex flex-col items-center justify-center gap-3 py-24 md:flex-row md:justify-around">
         <div className="flex flex-col items-start justify-center gap-5 p-4 text-xl font-bold sm:text-2xl">
           <p>
             به دنیای{" "}
@@ -38,9 +37,7 @@ export default function Home() {
           <Image src={coinLogo} alt="bit-coin" />
         </div>
       </div>
-      <div className="">
-        <Image src={heroBg} alt="hero-bg" priority width={1400} height={20} />
-      </div>
+      <div className="footer-img absolute bottom-0 h-32 w-full bg-cover bg-no-repeat" />
     </div>
   );
 }
