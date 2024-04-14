@@ -3,7 +3,7 @@ import * as cheerio from "cheerio";
 import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
 
-interface Coin {
+export interface Coin {
   name: string;
   price: string;
   change: string;
@@ -32,7 +32,7 @@ export async function GET() {
       name: coinName.text().trim(),
       price: $(selectedCoin[0]).text().trim(),
       change: $(selectedCoin[1]).text().trim(),
-      status: $(selectedCoin[1]).attr("class") as Status,
+      status: ($(selectedCoin[1]).attr("class") as Status) ?? "fixed",
       lowest: $(selectedCoin[2]).text().trim(),
       highest: $(selectedCoin[3]).text().trim(),
       time: $(selectedCoin[4]).text().trim(),
@@ -43,8 +43,5 @@ export async function GET() {
 
   await browser.close();
 
-  return NextResponse.json(
-    { data: coins, length: coins.length },
-    { status: 200 },
-  );
+  return NextResponse.json({ coins, length: coins.length }, { status: 200 });
 }
