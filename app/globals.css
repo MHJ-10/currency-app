@@ -4,12 +4,14 @@
 
 @layer utilities {
   .bg-hero {
-    background: url(../public/images/landing-bg.jpg) center no-repeat;
-    background-size: cover;
-    height: 100%;
+    background-image: url(../public/images/landing-bg.jpg);
   }
 
   .nav-img {
     background-image: url(../public/images/nav-img.png);
+  }
+
+  .footer-img {
+    background-image: url(../public/images/landing-img.png);
   }
 }
