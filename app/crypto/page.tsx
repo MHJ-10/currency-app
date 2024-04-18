@@ -1,43 +1,57 @@
-import React from "react";
-import prisma from "@/prisma/client";
-import CryptoCountdown from "./_components/CryptoCountdown";
+import { Crypto } from "../entities";
+
+interface CryptoData {
+  crypto: Crypto[];
+  length: number;
+}
 
 const CryptoPage = async () => {
-  const crypto = await prisma.crypto.findMany();
+  const res = await fetch("http://localhost:3000/api/crypto", {
+    next: {
+      revalidate: 2 * 60 * 60,
+    },
+  });
+  const data: CryptoData = await res.json();
+  const crypto = data.crypto;
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <CryptoCountdown crypto={crypto} />
-      <table className="mx-auto my-5 w-4/5 rounded-md border text-center text-white">
-        <thead className="border-b bg-white bg-opacity-70 text-primary ">
-          <tr>
-            <th className="px-6 py-4">نام ارز</th>
-            <th className="px-6 py-4">قیمت ریالی</th>
-            <th className="px-6 py-4">قیمت دلاری</th>
-            <th className="px-6 py-4">تغییر</th>
-            <th className="px-6 py-4">کمترین</th>
-            <th className="px-6 py-4">بیشترین</th>
-            <th className="px-6 py-4">زمان</th>
+    <table className="mx-auto my-5 w-11/12 rounded-md  border px-3 text-center text-white ">
+      <thead className="border-b bg-white bg-opacity-70 text-primary ">
+        <tr>
+          <th className="p-4">نام ارز</th>
+          <th className="p-4">قیمت ریالی</th>
+          <th className="p-4">قیمت دلاری</th>
+          <th className="hidden p-4 sm:table-cell">تغییر</th>
+          <th className="hidden p-4 sm:table-cell">کمترین</th>
+          <th className="hidden p-4 sm:table-cell">بیشترین</th>
+          <th className="hidden p-4 sm:table-cell">زمان</th>
+        </tr>
+      </thead>
+      <tbody>
+        {crypto.map((c) => (
+          <tr
+            key={c.name}
+            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${c.status === "high" && "bg-green-500"} ${c.status === "low" && "bg-red-500"} `}
+          >
+            <td className="whitespace-nowrap p-4">{c.name}</td>
+            <td className="whitespace-nowrap p-4">{c.rialPrice}</td>
+            <td className="whitespace-nowrap p-4">{c.dollarPrice}</td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+              {c.change}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+              {c.lowest}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+              {c.highest}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+              {c.time}
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {crypto?.map((c, i) => (
-            <tr
-              key={c.id}
-              className={`border-b border-white transition-colors duration-500 hover:bg-opacity-80  ${i % 2 === 0 ? "bg-primary" : "bg-secondary"} `}
-            >
-              <td className="whitespace-nowrap px-6 py-4">{c.name}</td>
-              <td className="whitespace-nowrap px-6 py-4">{c.rialPrice}</td>
-              <td className="whitespace-nowrap px-6 py-4">{c.dollarPrice}</td>
-              <td className="whitespace-nowrap px-6 py-4">{c.change}</td>
-              <td className="whitespace-nowrap px-6 py-4">{c.lowest}</td>
-              <td className="whitespace-nowrap px-6 py-4">{c.highest}</td>
-              <td className="whitespace-nowrap px-6 py-4">{c.time}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
