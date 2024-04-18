@@ -22,8 +22,8 @@ const CryptoPage = async () => {
           <th className="p-4">قیمت ریالی</th>
           <th className="p-4">قیمت دلاری</th>
           <th className="hidden p-4 sm:table-cell">تغییر</th>
-          <th className="hidden p-4 sm:table-cell">کمترین</th>
-          <th className="hidden p-4 sm:table-cell">بیشترین</th>
+          <th className="hidden p-4 lg:table-cell">کمترین</th>
+          <th className="hidden p-4 lg:table-cell">بیشترین</th>
           <th className="hidden p-4 sm:table-cell">زمان</th>
         </tr>
       </thead>
@@ -31,7 +31,7 @@ const CryptoPage = async () => {
         {crypto.map((c) => (
           <tr
             key={c.name}
-            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${c.status === "high" && "bg-green-500"} ${c.status === "low" && "bg-red-500"} `}
+            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${c.status === "high" && "bg-green-600"} ${c.status === "low" && "bg-red-500"} `}
           >
             <td className="whitespace-nowrap p-4">{c.name}</td>
             <td className="whitespace-nowrap p-4">{c.rialPrice}</td>
@@ -39,10 +39,10 @@ const CryptoPage = async () => {
             <td className="hidden whitespace-nowrap p-4 sm:table-cell">
               {c.change}
             </td>
-            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+            <td className="hidden whitespace-nowrap p-4 lg:table-cell">
               {c.lowest}
             </td>
-            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+            <td className="hidden whitespace-nowrap p-4 lg:table-cell">
               {c.highest}
             </td>
             <td className="hidden whitespace-nowrap p-4 sm:table-cell">

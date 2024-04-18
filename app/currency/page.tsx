@@ -18,26 +18,34 @@ const CurrencyPage = async () => {
     <table className="mx-auto my-5 w-4/5 rounded-md border text-center text-white">
       <thead className="border-b bg-white bg-opacity-70 text-primary ">
         <tr>
-          <th className="px-6 py-4">ارز آزاد</th>
-          <th className="px-6 py-4">قیمت زنده</th>
-          <th className="px-6 py-4">تغییر</th>
-          <th className="px-6 py-4">کمترین</th>
-          <th className="px-6 py-4">بیشترین</th>
-          <th className="px-6 py-4">زمان</th>
+          <th className="p-4">ارز آزاد</th>
+          <th className="p-4">قیمت زنده</th>
+          <th className="hidden p-4 sm:table-cell">تغییر</th>
+          <th className="hidden p-4 md:table-cell">کمترین</th>
+          <th className="hidden p-4 md:table-cell">بیشترین</th>
+          <th className="hidden p-4 sm:table-cell">زمان</th>
         </tr>
       </thead>
       <tbody>
         {currency.map((c) => (
           <tr
             key={c.name}
-            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${c.status === "high" && "bg-green-500"} ${c.status === "low" && "bg-red-500"} `}
+            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${c.status === "high" && "bg-green-600"} ${c.status === "low" && "bg-red-500"} `}
           >
-            <td className="whitespace-nowrap px-6 py-4">{c.name}</td>
-            <td className="whitespace-nowrap px-6 py-4">{c.price}</td>
-            <td className="whitespace-nowrap px-6 py-4">{c.change}</td>
-            <td className="whitespace-nowrap px-6 py-4">{c.lowest}</td>
-            <td className="whitespace-nowrap px-6 py-4">{c.highest}</td>
-            <td className="whitespace-nowrap px-6 py-4">{c.time}</td>
+            <td className="whitespace-nowrap p-4">{c.name}</td>
+            <td className="whitespace-nowrap p-4">{c.price}</td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+              {c.change}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 md:table-cell">
+              {c.lowest}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 md:table-cell">
+              {c.highest}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+              {c.time}
+            </td>
           </tr>
         ))}
       </tbody>
