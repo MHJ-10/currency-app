@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl">
-      <body className={`${vazir.className} bg-hero bg-cover bg-no-repeat`}>
+      <body
+        className={`${vazir.className} bg-hero h-screen bg-cover bg-no-repeat`}
+      >
         <Navbar />
         <main className="container mx-auto">{children}</main>
       </body>
