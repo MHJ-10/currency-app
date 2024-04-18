@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
-import ReactQueryProvider from "./ReactQueryProvider";
 
 const vazir = Vazirmatn({
   subsets: ["arabic"],
@@ -21,11 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl">
-      <body className={`${vazir.className} bg-hero`}>
-        <ReactQueryProvider>
-          <Navbar />
-          <main className="">{children}</main>
-        </ReactQueryProvider>
+      <body className={`${vazir.className} bg-hero bg-cover bg-no-repeat`}>
+        <Navbar />
+        <main className="container mx-auto">{children}</main>
       </body>
     </html>
   );

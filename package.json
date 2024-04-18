@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
-    "@tanstack/react-query": "^5.29.2",
-    "@tanstack/react-query-devtools": "^5.29.2",
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "delay": "^6.0.0",
