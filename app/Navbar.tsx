@@ -17,13 +17,13 @@ const Navbar = () => {
     <nav className="relative">
       <div className="nav-img absolute inset-0 bg-cover bg-center"></div>
 
-      <div className="w-full">
-        <div className="relative mx-auto flex items-center justify-between px-5 py-6 text-white">
-          <ul className="flex items-center justify-start gap-6">
+      <div className="container mx-auto w-full">
+        <div className="relative z-10 mx-auto flex items-center justify-between px-5 py-6 text-white">
+          <ul className="flex items-center justify-start gap-6 text-sm sm:text-base">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
-                  className={`${item.href === pathName && "font-bold"} text-slate-200`}
+                  className={`${item.href === pathName && "font-bold text-slate-300"} text-slate-200`}
                   href={item.href}
                 >
                   {item.label}
