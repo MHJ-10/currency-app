@@ -1,17 +1,7 @@
-import { Status } from "@prisma/client";
+import { Currency, Status } from "@/app/entities";
 import * as cheerio from "cheerio";
 import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
-
-export interface Currency {
-  name: string;
-  price: string;
-  change: string;
-  status: Status;
-  lowest: string;
-  highest: string;
-  time: string;
-}
 
 export async function GET() {
   const browser = await puppeteer.launch();
@@ -36,7 +26,7 @@ export async function GET() {
       name: currencyName.text().trim(),
       price: $(selectedCurrency[0]).text().trim(),
       change: $(selectedCurrency[1]).text().trim(),
-      status: $(selectedCurrency[1]).attr("class") as Status,
+      status: ($(selectedCurrency[1]).attr("class") as Status) ?? Status.fixed,
       lowest: $(selectedCurrency[2]).text().trim(),
       highest: $(selectedCurrency[3]).text().trim(),
       time: $(selectedCurrency[4]).text().trim(),

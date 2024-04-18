@@ -1,18 +1,7 @@
-import { Status } from "@prisma/client";
+import { Crypto, Status } from "@/app/entities";
 import * as cheerio from "cheerio";
 import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
-
-export interface Crypto {
-  name: string;
-  rialPrice: string;
-  dollarPrice: string;
-  change: string;
-  status: Status;
-  lowest: string;
-  highest: string;
-  time: string;
-}
 
 export async function GET() {
   const browser = await puppeteer.launch();
@@ -40,7 +29,7 @@ export async function GET() {
       change: $(selectedCrypto[2]).text().trim(),
       status:
         ($(selectedCrypto[2]).attr("class")?.split(" ")[1] as Status) ??
-        "fixed",
+        Status.fixed,
       lowest: $(selectedCrypto[3]).text().trim(),
       highest: $(selectedCrypto[4]).text().trim(),
       time: $(selectedCrypto[5]).text().trim(),
