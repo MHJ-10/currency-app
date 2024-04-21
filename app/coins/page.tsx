@@ -11,8 +11,7 @@ const CoinsTablePage = async () => {
       revalidate: 2 * 60 * 60,
     },
   });
-  const data: CoinData = await res.json();
-  const coins = data.coins;
+  const { coins }: CoinData = await res.json();
 
   return (
     <table className="mx-auto my-5 w-4/5 rounded-md border text-center text-white">
@@ -30,7 +29,7 @@ const CoinsTablePage = async () => {
         {coins.map((coin) => (
           <tr
             key={coin.name}
-            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${coin.status === "high" && "bg-green-600"} ${coin.status === "low" && "bg-red-500"} `}
+            className={`border-b border-${coin.status}-800 bg-${coin.status}-700 transition-colors duration-500  hover:bg-opacity-80`}
           >
             <td className="whitespace-nowrap p-4">{coin.name}</td>
             <td className="whitespace-nowrap p-4">{coin.price}</td>

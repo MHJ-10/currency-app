@@ -11,8 +11,7 @@ const CryptoPage = async () => {
       revalidate: 2 * 60 * 60,
     },
   });
-  const data: CryptoData = await res.json();
-  const crypto = data.crypto;
+  const { crypto }: CryptoData = await res.json();
 
   return (
     <table className="mx-auto my-5 w-11/12 rounded-md  border px-3 text-center text-white ">
@@ -31,7 +30,7 @@ const CryptoPage = async () => {
         {crypto.map((c) => (
           <tr
             key={c.name}
-            className={`border-b border-white bg-secondary transition-colors duration-500  hover:bg-opacity-80 ${c.status === "high" && "bg-green-600"} ${c.status === "low" && "bg-red-500"} `}
+            className={`border-b border-${c.status}-800 bg-${c.status}-700 transition-colors duration-500  hover:bg-opacity-80`}
           >
             <td className="whitespace-nowrap p-4">{c.name}</td>
             <td className="whitespace-nowrap p-4">{c.rialPrice}</td>
