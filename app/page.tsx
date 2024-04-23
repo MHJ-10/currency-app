@@ -33,7 +33,7 @@ export default function Home() {
             برای دسترسی به جدول قیمت‌ها، به بخش مربوطه در وبسایت ما مراجعه کنید
           </p>
         </div>
-        <div className="lg:animate-spin">
+        <div className="animate-pulse lg:animate-spin">
           <Image src={coinLogo} alt="bit-coin" />
         </div>
       </div>
