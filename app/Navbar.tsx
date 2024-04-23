@@ -23,7 +23,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
-                  className={`${item.href === pathName && "font-bold text-slate-300"} text-slate-200`}
+                  className={`${item.href === pathName && "font-bold text-yellow-500"} text-slate-200 hover:text-yellow-600`}
                   href={item.href}
                 >
                   {item.label}
