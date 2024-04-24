@@ -46,4 +46,7 @@ export default function Home() {
 export const metadata: Metadata = {
   title: "سایت اطلاع رسانی قیمت سکه و ارز",
   description: "شبکه اطلاع رسانی قیمت ارز به صوزت ساعتی",
+  icons: {
+    icon: "/icon.png",
+  },
 };
