@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Currency } from "../entities";
 
 interface CurrencyData {
@@ -53,3 +54,8 @@ const CurrencyPage = async () => {
 };
 
 export default CurrencyPage;
+
+export const metadata: Metadata = {
+  title: "جدول قیمت ساعتی ارز",
+  description: "بروز رسانی قیمت ارز به صورت ساعتی",
+};

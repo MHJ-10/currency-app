@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Coin } from "../entities";
 
 interface CoinData {
@@ -53,3 +54,8 @@ const CoinsTablePage = async () => {
 };
 
 export default CoinsTablePage;
+
+export const metadata: Metadata = {
+  title: "جدول قیمت ساعتی سکه",
+  description: "بروز رسانی قیمت سکه به صورت ساعتی",
+};

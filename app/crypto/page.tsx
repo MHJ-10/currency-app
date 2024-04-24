@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Crypto } from "../entities";
 
 interface CryptoData {
@@ -55,3 +56,8 @@ const CryptoPage = async () => {
 };
 
 export default CryptoPage;
+
+export const metadata: Metadata = {
+  title: "جدول قیمت ساعتی ارز دیجیتال",
+  description: "بروز رسانی قیمت ارز دیجیتال به صورت ساعتی",
+};

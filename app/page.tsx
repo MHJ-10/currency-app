@@ -1,4 +1,5 @@
 import coinLogo from "@/public/images/bitcoin-logo.png";
+import { Metadata } from "next";
 import Image from "next/image";
 
 export default function Home() {
@@ -41,3 +42,8 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "سایت اطلاع رسانی قیمت سکه و ارز",
+  description: "شبکه اطلاع رسانی قیمت ارز به صوزت ساعتی",
+};
