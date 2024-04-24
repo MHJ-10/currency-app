@@ -9,7 +9,7 @@ interface CryptoData {
 const CryptoPage = async () => {
   const res = await fetch("http://localhost:3000/api/crypto", {
     next: {
-      revalidate: 2 * 60 * 60,
+      revalidate: 60 * 60,
     },
   });
   const { crypto }: CryptoData = await res.json();

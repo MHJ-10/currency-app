@@ -9,7 +9,7 @@ interface CurrencyData {
 const CurrencyPage = async () => {
   const res = await fetch("http://localhost:3000/api/currency", {
     next: {
-      revalidate: 60,
+      revalidate: 60 * 60,
     },
   });
   const { currency }: CurrencyData = await res.json();
