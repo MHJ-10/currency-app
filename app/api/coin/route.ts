@@ -22,7 +22,8 @@ export async function GET() {
       name: coinName.text().trim(),
       price: $(selectedCoin[0]).text().trim(),
       change: $(selectedCoin[1]).text().trim(),
-      status: ($(selectedCoin[1]).attr("class") as Status) || Status.fixed,
+      status:
+        (selectedCoin.find("span").attr("class") as Status) || Status.fixed,
       lowest: $(selectedCoin[2]).text().trim(),
       highest: $(selectedCoin[3]).text().trim(),
       time: $(selectedCoin[4]).text().trim(),
