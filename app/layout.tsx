@@ -24,7 +24,7 @@ export default function RootLayout({
         className={`${vazir.className} bg-hero h-full bg-cover bg-no-repeat`}
       >
         <Navbar />
-        <main className="container mx-auto">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
