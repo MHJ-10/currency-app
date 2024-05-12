@@ -15,7 +15,7 @@ const CurrencyPage = async () => {
   const { currency }: CurrencyData = await res.json();
 
   return (
-    <table className="mx-auto my-5 w-4/5 rounded-md border text-center text-white">
+    <table className="container mx-auto my-5 w-4/5 rounded-md border text-center text-white">
       <thead className="border-b bg-white bg-opacity-70 text-primary">
         <tr>
           <th className="p-4">ارز آزاد</th>

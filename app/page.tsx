@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="relative -mt-20 h-screen text-white">
-      <div className="flex flex-col items-center justify-center gap-3 py-24 md:flex-row md:justify-around">
+      <div className="container mx-auto flex flex-col items-center justify-center gap-3 py-24 md:flex-row md:justify-around">
         <div className="flex flex-col items-start justify-center gap-5 p-4 text-xl font-bold sm:text-2xl">
           <p>
             به دنیای{" "}
@@ -34,11 +34,11 @@ export default function Home() {
             برای دسترسی به جدول قیمت‌ها، به بخش مربوطه در وبسایت ما مراجعه کنید
           </p>
         </div>
-        <div className="animate-pulse lg:animate-spin">
+        <div className="size-80 animate-pulse lg:animate-spin">
           <Image src={coinLogo} alt="bit-coin" />
         </div>
       </div>
-      <div className="footer-img absolute bottom-0 h-32 w-full bg-cover bg-no-repeat" />
+      <div className="footer-img absolute bottom-0 h-40 w-full bg-cover bg-no-repeat" />
     </div>
   );
 }

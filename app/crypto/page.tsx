@@ -15,7 +15,7 @@ const CryptoPage = async () => {
   const { crypto }: CryptoData = await res.json();
 
   return (
-    <table className="mx-auto my-5 w-11/12 rounded-md  border px-3 text-center text-white ">
+    <table className="container mx-auto my-5 w-11/12 rounded-md  border px-3 text-center text-white ">
       <thead className="border-b bg-white bg-opacity-70 text-primary ">
         <tr>
           <th className="p-4">نام ارز</th>
