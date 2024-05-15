@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="rtl">
       <body
-        className={`${vazir.className} bg-hero h-full bg-cover bg-no-repeat`}
+        className={`${vazir.className} bg-hero h-[100vh] bg-cover bg-no-repeat`}
       >
         <Navbar />
         <main>{children}</main>
