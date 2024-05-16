@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="text-white">
-      <div className="container mx-auto flex flex-col items-center justify-center gap-3 py-10 sm:py-24 sm:pb-0 md:flex-row md:justify-around">
+      <div className="container mx-auto flex flex-col items-center justify-center gap-3 py-10 md:flex-row md:justify-around">
         <div className="flex flex-col items-start justify-center gap-5 p-4 text-xl font-bold sm:text-2xl">
           <p>
             به دنیای{" "}
