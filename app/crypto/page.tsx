@@ -15,37 +15,45 @@ const CryptoPage = async () => {
   const { crypto }: CryptoData = await res.json();
 
   return (
-    <table className="container mx-auto my-5 w-11/12 rounded-md  border px-3 text-center text-white ">
-      <thead className="border-b bg-white bg-opacity-70 text-primary ">
-        <tr>
-          <th className="p-4">نام ارز</th>
-          <th className="p-4">قیمت ریالی</th>
-          <th className="p-4">قیمت دلاری</th>
-          <th className="hidden p-4 sm:table-cell">تغییر</th>
-          <th className="hidden p-4 lg:table-cell">کمترین</th>
-          <th className="hidden p-4 lg:table-cell">بیشترین</th>
-          <th className="hidden p-4 sm:table-cell">زمان</th>
+    <table className="container mx-auto my-5 w-4/5 rounded-md border text-center text-white">
+      <thead className="flex w-full border-b bg-white bg-opacity-70 text-primary ">
+        <tr className="flex w-full">
+          <th className="w-1/2 p-4 sm:w-1/5 lg:w-1/6">نام ارز</th>
+          <th className="w-1/2 p-4 sm:w-1/5 lg:w-1/6">قیمت ریالی</th>
+          <th className="hidden p-4 sm:table-cell sm:w-1/5 lg:w-1/6">
+            قیمت دلاری
+          </th>
+          <th className="hidden p-4 sm:table-cell sm:w-1/5 lg:w-1/6">تغییر</th>
+          <th className="hidden p-4 lg:table-cell lg:w-1/12">کمترین</th>
+          <th className="hidden p-4 lg:table-cell lg:w-1/12">بیشترین</th>
+          <th className="hidden p-4 sm:table-cell sm:w-1/5 lg:w-1/6">زمان</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="flex h-[70vh] w-full flex-col items-center justify-between overflow-y-scroll">
         {crypto.map((c) => (
           <tr
             key={c.name}
-            className={`border-b border-${c.status}-800 bg-${c.status}-700 transition-colors duration-500  hover:bg-opacity-80`}
+            className={`flex border-b border-${c.status}-800 bg-${c.status}-700 w-full transition-colors duration-500  hover:bg-opacity-80`}
           >
-            <td className="whitespace-nowrap p-4">{c.name}</td>
-            <td className="whitespace-nowrap p-4">{c.rialPrice}</td>
-            <td className="whitespace-nowrap p-4">{c.dollarPrice}</td>
-            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+            <td className="w-1/2 whitespace-nowrap p-4 sm:w-1/5 lg:w-1/6">
+              {c.name}
+            </td>
+            <td className="w-1/2 whitespace-nowrap p-4 sm:w-1/5 lg:w-1/6">
+              {c.rialPrice}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell sm:w-1/5 lg:w-1/6">
+              {c.dollarPrice}
+            </td>
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell sm:w-1/5 lg:w-1/6">
               {c.change}
             </td>
-            <td className="hidden whitespace-nowrap p-4 lg:table-cell">
+            <td className="hidden whitespace-nowrap p-4 lg:table-cell lg:w-1/12">
               {c.lowest}
             </td>
-            <td className="hidden whitespace-nowrap p-4 lg:table-cell">
+            <td className="hidden whitespace-nowrap p-4 lg:table-cell lg:w-1/12">
               {c.highest}
             </td>
-            <td className="hidden whitespace-nowrap p-4 sm:table-cell">
+            <td className="hidden whitespace-nowrap p-4 sm:table-cell sm:w-1/5 lg:w-1/6">
               {c.time}
             </td>
           </tr>

@@ -26,7 +26,7 @@ const CurrencyPage = async () => {
           <th className="hidden p-4 sm:table-cell sm:w-1/4 md:w-1/6">زمان</th>
         </tr>
       </thead>
-      <tbody className="flex h-[80vh] w-full flex-col items-center justify-between overflow-y-scroll">
+      <tbody className="flex h-[70vh] w-full flex-col items-center justify-between overflow-y-scroll">
         {currency.map((c) => (
           <tr
             key={c.name}
