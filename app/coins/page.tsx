@@ -7,7 +7,7 @@ interface CoinData {
 }
 
 const CoinsTablePage = async () => {
-  const res = await fetch("http://localhost:3000/api/coin", {
+  const res = await fetch(process.env.BASE_URL + "/api/coin", {
     next: {
       revalidate: 60 * 60,
     },

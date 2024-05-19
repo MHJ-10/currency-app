@@ -7,7 +7,7 @@ interface CryptoData {
 }
 
 const CryptoPage = async () => {
-  const res = await fetch("http://localhost:3000/api/crypto", {
+  const res = await fetch(process.env.BASE_URL + "/api/crypto", {
     next: {
       revalidate: 60 * 60,
     },
