@@ -1,14 +1,10 @@
 import { Currency, Status } from "@/app/entities";
+import axios from "axios";
 import * as cheerio from "cheerio";
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
 
 export async function GET() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto("https://www.tgju.org/", { waitUntil: "networkidle2" });
-
-  const html = await page.content();
+  const html = (await axios.get("https://www.tgju.org/")).data;
   const $ = cheerio.load(html);
 
   const currency: Currency[] = [];
@@ -56,8 +52,6 @@ export async function GET() {
 
     currency.push(data);
   }
-
-  await browser.close();
 
   return NextResponse.json(
     { currency, length: currency.length },
