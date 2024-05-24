@@ -24,8 +24,7 @@ export async function GET() {
       dollarPrice: $(selectedCrypto[1]).text().trim(),
       change: $(selectedCrypto[2]).text().trim(),
       status:
-        ($(selectedCrypto[2]).attr("class")?.split(" ")[1] as Status) ??
-        Status.fixed,
+        ($(selectedCrypto[2]).find("div").attr("class") as Status) || "fixed",
       lowest: $(selectedCrypto[3]).text().trim(),
       highest: $(selectedCrypto[4]).text().trim(),
       time: $(selectedCrypto[5]).text().trim(),
