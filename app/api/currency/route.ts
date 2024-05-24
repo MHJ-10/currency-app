@@ -22,7 +22,8 @@ export async function GET() {
       name: currencyName.text().trim(),
       price: $(selectedCurrency[0]).text().trim(),
       change: $(selectedCurrency[1]).text().trim(),
-      status: ($(selectedCurrency[1]).attr("class") as Status) || Status.fixed,
+      status:
+        ($(selectedCurrency[1]).find("div").attr("class") as Status) || "fixed",
       lowest: $(selectedCurrency[2]).text().trim(),
       highest: $(selectedCurrency[3]).text().trim(),
       time: $(selectedCurrency[4]).text().trim(),
@@ -44,7 +45,8 @@ export async function GET() {
       name: currencyName.text().trim(),
       price: $(selectedCurrency[0]).text().trim(),
       change: $(selectedCurrency[1]).text().trim(),
-      status: ($(selectedCurrency[1]).attr("class") as Status) || Status.fixed,
+      status:
+        ($(selectedCurrency[1]).find("div").attr("class") as Status) || "fixed",
       lowest: $(selectedCurrency[2]).text().trim(),
       highest: $(selectedCurrency[3]).text().trim(),
       time: $(selectedCurrency[4]).text().trim(),
